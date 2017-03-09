@@ -14,11 +14,17 @@ public class CharacterChoiceScript : MonoBehaviour {
     PowerLevelScripts pl;
     public float clickCount = 0;
 
+    public List<string> windyWeather = new List<string>();
+    public List<string> stormyWeather = new List<string>();
+    public List<string> snowyWeather = new List<string>();
+    public List<string> niceWeather = new List<string>();
+
 	// Use this for initialization
 	void Start () {
 
         powerLevels = GameObject.Find("PlayerPowerLevels");
         pl = powerLevels.GetComponent<PowerLevelScripts>();
+        ChooseCharacter("antartica", null);
 		
 	}
 	
@@ -67,7 +73,25 @@ public class CharacterChoiceScript : MonoBehaviour {
         string temp = place["query"]["results"]["channel"]["item"]["condition"]["temp"];
         print(temp);
         float tempFloat = float.Parse(temp);
-        pl.PlayerPowerLevels.Add(tempFloat);  
+        pl.PlayerPowerLevels.Add(tempFloat);
+        JSONNode condition = place["query"]["results"]["channel"]["item"]["condition"]["text"];
+        print(condition);
+        if (windyWeather.Contains(condition))
+        {
+            Debug.Log("IT'S WINDY AF");
+        }
+        if (stormyWeather.Contains(condition))
+        {
+            Debug.Log("OH SHIT IT'S STORMY AF");
+        }
+        if (snowyWeather.Contains(condition))
+        {
+            Debug.Log("IT'S COLD AF");
+        }
+        if (niceWeather.Contains(condition))
+        {
+            Debug.Log("IT'S NICE AF OUTSIDE");
+        }
     }
 
     public void ChooseMiami()
