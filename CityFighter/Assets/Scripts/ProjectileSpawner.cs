@@ -51,6 +51,23 @@ public class ProjectileSpawner : MonoBehaviour {
         {
             damage = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>().PlayerPowerLevels[1];
             Debug.Log(gameObject.name + " does " + damage + " damage!");
+
+            if (pl.PlayerAbilities[1] == "Wind")
+            {
+                projectilePrefab = windPrefab;
+            }
+            if (pl.PlayerAbilities[1] == "Lightning")
+            {
+                projectilePrefab = lightningPrefab;
+            }
+            if (pl.PlayerAbilities[1] == "Sun")
+            {
+                projectilePrefab = sunPrefab;
+            }
+            if (pl.PlayerAbilities[1] == "Snow")
+            {
+                projectilePrefab = snowPrefab;
+            }
         }
 
     }
