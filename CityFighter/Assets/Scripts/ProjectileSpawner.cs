@@ -6,20 +6,45 @@ public class ProjectileSpawner : MonoBehaviour {
 
     public float damage;
     public GameObject projectilePrefab;
+    public GameObject lightningPrefab;
+    public GameObject sunPrefab;
+    public GameObject windPrefab;
+    public GameObject snowPrefab;
     //float firingSpeed;
     public GameObject player;
     public float projectilePosTuning;
     private float projectilePosX;
     private float projectilePosY;
 
+    PowerLevelScripts pl;
+
     // Use this for initialization
     void Start()
     {
+        pl = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>();
 
         if (gameObject.name == "Player")
         {
-            damage = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>().PlayerPowerLevels[0];
+            damage = pl.PlayerPowerLevels[0];
             Debug.Log(gameObject.name + " does " + damage + " damage!");
+
+            if (pl.PlayerAbilities[0] == "Wind")
+            {
+                projectilePrefab = windPrefab;
+            }
+            if (pl.PlayerAbilities[0] == "Lightning")
+            {
+                projectilePrefab = lightningPrefab;
+            }
+            if (pl.PlayerAbilities[0] == "Sun")
+            {
+                projectilePrefab = sunPrefab;
+            }
+            if (pl.PlayerAbilities[0] == "Snow")
+            {
+                projectilePrefab = snowPrefab;
+            }
+
         }
 
         if (gameObject.name == "Player2")

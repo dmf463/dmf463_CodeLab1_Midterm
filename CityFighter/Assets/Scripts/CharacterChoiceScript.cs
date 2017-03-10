@@ -73,23 +73,28 @@ public class CharacterChoiceScript : MonoBehaviour {
         print(temp);
         float tempFloat = float.Parse(temp);
         pl.PlayerPowerLevels.Add(tempFloat);
+
         JSONNode condition = place["query"]["results"]["channel"]["item"]["condition"]["text"];
         print(condition);
         if (windyWeather.Contains(condition))
         {
             Debug.Log("IT'S WINDY AF");
+            pl.PlayerAbilities.Add("Wind");
         }
         if (stormyWeather.Contains(condition))
         {
             Debug.Log("OH SHIT IT'S STORMY AF");
+            pl.PlayerAbilities.Add("Lightning");
         }
         if (snowyWeather.Contains(condition))
         {
             Debug.Log("IT'S COLD AF");
+            pl.PlayerAbilities.Add("Snow");
         }
         if (niceWeather.Contains(condition))
         {
             Debug.Log("IT'S NICE AF OUTSIDE");
+            pl.PlayerAbilities.Add("Sun");
         }
     }
 
