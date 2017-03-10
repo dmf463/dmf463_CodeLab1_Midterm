@@ -6,7 +6,7 @@ public class ProjectileSpawner : MonoBehaviour {
 
     public float damage;
     public GameObject projectilePrefab;
-    public float firingSpeed;
+    //float firingSpeed;
     public GameObject player;
     public float projectilePosTuning;
     private float projectilePosX;
@@ -53,11 +53,17 @@ public class ProjectileSpawner : MonoBehaviour {
         projectile.transform.parent = gameObject.transform;
         if (this.transform.localScale.x == (-1))
         {
-            projectile.GetComponent<Rigidbody>().velocity = new Vector3(-firingSpeed, 0, 0);
+            projectile.GetComponent<Rigidbody>().velocity = new Vector3(-firingSpeed(), 0, 0);
         }
         else
         {
-            projectile.GetComponent<Rigidbody>().velocity = new Vector3(firingSpeed, 0, 0);
+            projectile.GetComponent<Rigidbody>().velocity = new Vector3(firingSpeed(), 0, 0);
         }
+    }
+
+    public virtual float firingSpeed()
+    {
+        float firingSpeed = 0;
+        return firingSpeed;
     }
 }

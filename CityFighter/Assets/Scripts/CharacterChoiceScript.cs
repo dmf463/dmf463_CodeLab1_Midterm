@@ -24,8 +24,7 @@ public class CharacterChoiceScript : MonoBehaviour {
 
         powerLevels = GameObject.Find("PlayerPowerLevels");
         pl = powerLevels.GetComponent<PowerLevelScripts>();
-        ChooseCharacter("antartica", null);
-		
+
 	}
 	
 	// Update is called once per frame
