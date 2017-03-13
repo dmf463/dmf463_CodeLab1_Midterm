@@ -49,7 +49,7 @@ public class ProjectileSpawner : MonoBehaviour {
 
         if (gameObject.name == "Player2")
         {
-            damage = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>().PlayerPowerLevels[1];
+            damage = pl.PlayerPowerLevels[1];
             Debug.Log(gameObject.name + " does " + damage + " damage!");
 
             if (pl.PlayerAbilities[1] == "Wind")
@@ -92,10 +92,11 @@ public class ProjectileSpawner : MonoBehaviour {
     {
         Vector2 projectilePos = new Vector3(projectilePosX, projectilePosY);
         GameObject projectile = Instantiate(projectilePrefab, projectilePos, Quaternion.identity) as GameObject;
-        projectile.transform.parent = gameObject.transform;
+        //projectile.transform.parent = gameObject.transform;
         if (this.transform.localScale.x == (-1))
         {
             projectile.GetComponent<Rigidbody>().velocity = new Vector3(-firingSpeed(), 0, 0);
+            Debug.Log("Flipping!");
         }
         else
         {
@@ -105,7 +106,7 @@ public class ProjectileSpawner : MonoBehaviour {
 
     public virtual float firingSpeed()
     {
-        float firingSpeed = 0;
+        float firingSpeed = 50;
         return firingSpeed;
     }
 }

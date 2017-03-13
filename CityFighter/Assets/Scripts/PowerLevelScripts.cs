@@ -8,8 +8,20 @@ public class PowerLevelScripts : MonoBehaviour {
     public List<float> PlayerPowerLevels;
     public List<string> PlayerAbilities;
 
+    public static PowerLevelScripts instance;
+
 	// Use this for initialization
 	void Start () {
+
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         PlayerPowerLevels = new List<float>();
         PlayerAbilities = new List<string>();

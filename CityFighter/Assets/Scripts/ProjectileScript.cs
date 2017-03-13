@@ -5,24 +5,45 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour {
 
     ProjectileSpawner projectileSpawner;
+    PowerLevelScripts pl;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+        pl = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>();
+
+    }
 
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Floor")
         {
-            Destroy(this.gameObject);
+            if (this.gameObject.tag != "IceSpikes")
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                var joint = gameObject.AddComponent<FixedJoint>();
+                joint.connectedBody = other.rigidbody;
+            }
+
         }
 
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerControlScript>().playerHealth -= transform.parent.GetComponent<ProjectileSpawner>().damage;
-            Destroy(gameObject);
-            Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().playerHealth + " health!");
+            if (other.gameObject.name == "Player")
+            {
+                other.gameObject.GetComponent<PlayerControlScript>().playerHealth -= pl.PlayerPowerLevels[1];
+                Destroy(gameObject);
+                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().playerHealth + " health!");
+            }
+            if (other.gameObject.name == "Player2")
+            {
+                other.gameObject.GetComponent<PlayerControlScript>().playerHealth -= pl.PlayerPowerLevels[0];
+                Destroy(gameObject);
+                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().playerHealth + " health!");
+            }
         }
 
     }
