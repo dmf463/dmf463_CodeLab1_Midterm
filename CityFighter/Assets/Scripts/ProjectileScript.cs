@@ -34,15 +34,15 @@ public class ProjectileScript : MonoBehaviour {
         {
             if (other.gameObject.name == "Player")
             {
-                other.gameObject.GetComponent<PlayerControlScript>().playerHealth -= pl.PlayerPowerLevels[1];
+                other.gameObject.GetComponent<PlayerControlScript>().PlayerHealth -= pl.PlayerPowerLevels[1];
                 Destroy(gameObject);
-                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().playerHealth + " health!");
+                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().PlayerHealth + " health!");
             }
             if (other.gameObject.name == "Player2")
             {
-                other.gameObject.GetComponent<PlayerControlScript>().playerHealth -= pl.PlayerPowerLevels[0];
+                other.gameObject.GetComponent<PlayerControlScript>().PlayerHealth -= pl.PlayerPowerLevels[0];
                 Destroy(gameObject);
-                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().playerHealth + " health!");
+                Debug.Log(other.gameObject.name + " has " + other.gameObject.GetComponent<PlayerControlScript>().PlayerHealth + " health!");
             }
         }
 

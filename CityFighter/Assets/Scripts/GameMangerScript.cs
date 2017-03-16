@@ -20,8 +20,8 @@ public class GameMangerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        player1HealthUI.text = player1.GetComponent<PlayerControlScript>().playerHealth.ToString();
-        player2HealthUI.text = player2.GetComponent<PlayerControlScript>().playerHealth.ToString();
+        player1HealthUI.text = player1.GetComponent<PlayerControlScript>().PlayerHealth.ToString();
+        player2HealthUI.text = player2.GetComponent<PlayerControlScript>().PlayerHealth.ToString();
 
     }
 }

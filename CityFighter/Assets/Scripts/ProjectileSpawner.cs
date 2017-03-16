@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class ProjectileSpawner : MonoBehaviour {
 
-    public float damage;
+    private float damage;
+    public float Damage
+    {
+        get
+        {
+            return damage;
+        }
+        set
+        {
+            damage = value;
+        }
+    }
     public GameObject projectilePrefab;
     public GameObject lightningPrefab;
     public GameObject sunPrefab;
@@ -25,8 +36,8 @@ public class ProjectileSpawner : MonoBehaviour {
 
         if (gameObject.name == "Player")
         {
-            damage = pl.PlayerPowerLevels[0];
-            Debug.Log(gameObject.name + " does " + damage + " damage!");
+            Damage = pl.PlayerPowerLevels[0];
+            Debug.Log(gameObject.name + " does " + Damage + " damage!");
 
             if (pl.PlayerAbilities[0] == "Wind")
             {
@@ -49,8 +60,8 @@ public class ProjectileSpawner : MonoBehaviour {
 
         if (gameObject.name == "Player2")
         {
-            damage = pl.PlayerPowerLevels[1];
-            Debug.Log(gameObject.name + " does " + damage + " damage!");
+            Damage = pl.PlayerPowerLevels[1];
+            Debug.Log(gameObject.name + " does " + Damage + " damage!");
 
             if (pl.PlayerAbilities[1] == "Wind")
             {

@@ -11,7 +11,29 @@ public class PlayerControlScript : MonoBehaviour {
     public float jumpSpeed;
     bool isJumping = false;
     ProjectileSpawner projectileSpawner;
-    public float playerHealth;
+    private const int HEALTH_MIN = 0;
+    private const int HEALTH_MAX = 500;
+    private float playerHealth;
+    public float PlayerHealth
+    {
+        get
+        {
+            return playerHealth;
+        }
+        set
+        {
+            playerHealth = value;
+            if (playerHealth > HEALTH_MAX)
+            {
+                playerHealth = HEALTH_MAX;
+            }
+            if (playerHealth < HEALTH_MIN)
+            {
+                playerHealth = HEALTH_MIN;
+                Destroy(gameObject);
+            }
+        }
+    }
 
 	//public keyboard keys for controlling movement
 	public KeyCode upKey = KeyCode.W;
@@ -24,16 +46,13 @@ public class PlayerControlScript : MonoBehaviour {
 	void Start () {
 
         projectileSpawner = GetComponent<ProjectileSpawner>();
+        PlayerHealth = HEALTH_MAX;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (playerHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
         //Call the move function with a direction and a key
         //Move(Vector3.up, upKey);
         Vector3 jumpVelocity = GetComponent<Rigidbody>().velocity;

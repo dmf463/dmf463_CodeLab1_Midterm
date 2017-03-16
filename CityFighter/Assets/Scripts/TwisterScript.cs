@@ -12,6 +12,14 @@ public class TwisterScript : MonoBehaviour {
 	void Start () {
 		
 	}
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Twister")
+        {
+            Destroy(gameObject);
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
