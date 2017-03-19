@@ -10,7 +10,6 @@ public class PowerLevelScripts : MonoBehaviour {
     public List<string> PlayerAbilities;
 
     public List<string> levelNames;
-    public static int levelNum;
 
     public static PowerLevelScripts instance;
 
@@ -34,7 +33,7 @@ public class PowerLevelScripts : MonoBehaviour {
         PlayerAbilities = new List<string>();
         levelNames = new List<string>();
 
-        string fileName = levelNames[levelNum];
+        string fileName = levelNames[0];
         string filePath = Application.dataPath + "/Levels/" + fileName;
 
         StreamReader sr = new StreamReader(filePath);

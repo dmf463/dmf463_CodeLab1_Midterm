@@ -14,6 +14,9 @@ public class GameMangerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        player1 = GameObject.Find("Player");
+        player2 = GameObject.Find("Player2");
+
 		
 	}
 	
