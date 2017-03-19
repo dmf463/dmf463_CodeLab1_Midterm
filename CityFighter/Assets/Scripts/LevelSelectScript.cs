@@ -21,7 +21,7 @@ public class LevelSelectScript : MonoBehaviour {
 
     public void TestLevel()
     {
-        pl.levelNames.Add("testLevel.text");
+        pl.levelNames.Add("testLevel.txt");
         SceneManager.LoadScene("WeatherFighter");
 
     }

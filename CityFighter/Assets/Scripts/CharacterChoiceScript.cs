@@ -32,7 +32,7 @@ public class CharacterChoiceScript : MonoBehaviour {
 
         if(clickCount == 2)
         {
-            SceneManager.LoadScene("WeatherFighter");
+            SceneManager.LoadScene("LevelSelectScreen");
         }
 		
 	}
