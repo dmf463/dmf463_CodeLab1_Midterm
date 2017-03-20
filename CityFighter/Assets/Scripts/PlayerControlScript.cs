@@ -36,6 +36,8 @@ public class PlayerControlScript : MonoBehaviour {
     }
     Rigidbody rb;
 
+    public float magnitudeClamp;
+
 	//public keyboard keys for controlling movement
 	public KeyCode upKey = KeyCode.W;
 	public KeyCode downKey = KeyCode.S;
@@ -55,6 +57,13 @@ public class PlayerControlScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (rb.velocity.magnitude > magnitudeClamp)
+        {
+            Vector3 vel = rb.velocity;
+            vel = Vector3.ClampMagnitude(vel, magnitudeClamp);
+            rb.velocity = vel;
+        }
 
         //Call the move function with a direction and a key
         //Move(Vector3.up, upKey);
