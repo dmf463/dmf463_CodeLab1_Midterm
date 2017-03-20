@@ -66,11 +66,14 @@ public class PlayerControlScript : MonoBehaviour {
         }
         if (Input.GetKeyDown(leftKey))
         {
-            transform.localScale = new Vector3 (-1, 2, 1);
+            //transform.parent.localScale = new Vector3(-1, 1, 1);
+            //transform.localScale = new Vector3 (-1, 2, 1);
+            transform.parent.localRotation = Quaternion.Euler(new Vector3(0, -180, 0));
         }
         if (Input.GetKeyDown(rightKey))
         {
-            transform.localScale = new Vector3(1, 2, 1);
+            //transform.parent.localScale = new Vector3(1, 1, 1);
+            transform.parent.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
         if (Input.GetKeyDown(shootKey))
         {
