@@ -76,7 +76,7 @@ public class PlayerControlScript : MonoBehaviour {
         {
             projectileSpawner.shootProjectile();
         }
-        Move(Vector3.down, downKey);
+        //Move(Vector3.down, downKey);
 		Move(Vector3.left, leftKey);
 		Move(Vector3.right, rightKey);
 	}
