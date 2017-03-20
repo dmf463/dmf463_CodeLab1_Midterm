@@ -7,7 +7,7 @@ public class PlayerControlScript : MonoBehaviour {
 	//Variable for controlling speed
 	//it is public, so it can been seen outside
 	//of this class, including in the inspector
-	public float speed = 1;
+	public float speed;
     public float jumpSpeed;
     bool isJumping = false;
     ProjectileSpawner projectileSpawner;
@@ -34,6 +34,7 @@ public class PlayerControlScript : MonoBehaviour {
             }
         }
     }
+    Rigidbody rb;
 
 	//public keyboard keys for controlling movement
 	public KeyCode upKey = KeyCode.W;
@@ -44,6 +45,8 @@ public class PlayerControlScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+        rb = GetComponent<Rigidbody>();
 
         projectileSpawner = GetComponent<ProjectileSpawner>();
         PlayerHealth = HEALTH_MAX;
@@ -90,9 +93,10 @@ public class PlayerControlScript : MonoBehaviour {
 	void Move(Vector3 dir, KeyCode key){
 		//if the key passed to this function was pressed
 		if(Input.GetKey(key)){
-			//than translate the player in the direction passed to this function
-			//multiplied by the speed and the deltaTime
-			transform.Translate(dir * speed * Time.deltaTime);
+            //than translate the player in the direction passed to this function
+            //multiplied by the speed and the deltaTime
+            //transform.Translate(dir * speed * Time.deltaTime);
+            rb.AddForce(dir * speed);
 		}
 	}
 }

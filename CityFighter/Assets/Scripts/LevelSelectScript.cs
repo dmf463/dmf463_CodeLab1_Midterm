@@ -7,7 +7,7 @@ using UnityEngine;
 public class LevelSelectScript : MonoBehaviour {
 
     PowerLevelScripts pl;
-
+    private const string WEATHER_FIGHTER = "WeatherFighter";
 	// Use this for initialization
 	void Start () {
 
@@ -22,7 +22,16 @@ public class LevelSelectScript : MonoBehaviour {
     public void TestLevel()
     {
         pl.levelNames.Add("testLevel.txt");
-        SceneManager.LoadScene("WeatherFighter");
-
+        SceneManager.LoadScene(WEATHER_FIGHTER);
+    }
+    public void EifellTower()
+    {
+        pl.levelNames.Add("EifellTower.txt");
+        SceneManager.LoadScene(WEATHER_FIGHTER);
+    }
+    public void Florida()
+    {
+        pl.levelNames.Add("Florida.txt");
+        SceneManager.LoadScene(WEATHER_FIGHTER);
     }
 }
