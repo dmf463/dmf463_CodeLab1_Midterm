@@ -36,6 +36,8 @@ public class PlayerControlScript : MonoBehaviour {
     }
     Rigidbody rb;
 
+    public bool isRotated;
+
     public float magnitudeClamp;
 
 	//public keyboard keys for controlling movement
@@ -78,11 +80,13 @@ public class PlayerControlScript : MonoBehaviour {
             //transform.parent.localScale = new Vector3(-1, 1, 1);
             //transform.localScale = new Vector3 (-1, 2, 1);
             transform.localRotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            isRotated = true;
         }
         if (Input.GetKeyDown(rightKey))
         {
             //transform.parent.localScale = new Vector3(1, 1, 1);
             transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            isRotated = false;
         }
         if (Input.GetKeyDown(shootKey))
         {

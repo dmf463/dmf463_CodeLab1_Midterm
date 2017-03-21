@@ -28,11 +28,13 @@ public class ProjectileSpawner : MonoBehaviour {
     private float projectilePosY;
 
     PowerLevelScripts pl;
+    PlayerControlScript pc;
 
     // Use this for initialization
     void Start()
     {
         pl = GameObject.Find("PlayerPowerLevels").GetComponent<PowerLevelScripts>();
+        pc = GetComponent<PlayerControlScript>();
 
         if (gameObject.name == "Player")
         {
@@ -87,7 +89,7 @@ public class ProjectileSpawner : MonoBehaviour {
     void Update()
     {
 
-        if (this.transform.localScale.x == (-1))
+        if (pc.isRotated == true)
         {
             projectilePosX = (player.transform.position.x) - projectilePosTuning;
         }
@@ -104,7 +106,7 @@ public class ProjectileSpawner : MonoBehaviour {
         Vector2 projectilePos = new Vector3(projectilePosX, projectilePosY);
         GameObject projectile = Instantiate(projectilePrefab, projectilePos, Quaternion.identity) as GameObject;
         //projectile.transform.parent = gameObject.transform;
-        if (this.transform.localScale.x == (-1))
+        if (pc.isRotated == true)
         {
             projectile.GetComponent<Rigidbody>().velocity = new Vector3(-firingSpeed(), 0, 0);
             Debug.Log("Flipping!");
