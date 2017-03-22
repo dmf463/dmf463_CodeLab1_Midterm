@@ -22,7 +22,14 @@ public class GameMangerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        if (player1 == null)
+        {
+            player1HealthUI.text = "0";
+        }
+        if (player2 == null)
+        {
+            player2HealthUI.text = "0";
+        }
         player1HealthUI.text = player1.GetComponent<PlayerControlScript>().PlayerHealth.ToString();
         player2HealthUI.text = player2.GetComponent<PlayerControlScript>().PlayerHealth.ToString();
 
